@@ -11,3 +11,4 @@ public class EmpleadoService { // Inicio Clase EmpleadoService
     @Autowired //Conectar la clase con el repositorio de Empleado
     EmpleadoRepository empleadoRepository; //Objeto tipo EmpleadoRepository para usar metodos de la clase
 }
+// hola mundo
