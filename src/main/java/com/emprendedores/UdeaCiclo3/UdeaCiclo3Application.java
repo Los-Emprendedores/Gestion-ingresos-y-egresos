@@ -1,7 +1,9 @@
 package com.emprendedores.UdeaCiclo3;
 // Importe de librerias
 
+import com.emprendedores.UdeaCiclo3.Entidades.Empleado;
 import com.emprendedores.UdeaCiclo3.Entidades.Empresa; // Impotar clase empresa
+import com.emprendedores.UdeaCiclo3.Entidades.MovimientoDinero;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -18,18 +20,27 @@ public class UdeaCiclo3Application {
 		return "Hola Cliclo 3...";
 	}
 
-	// GetMapping Pueba Empresa
-	@GetMapping("/test")
-	public String test(){Empresa emp = new Empresa("STARK INDUSTRIES", "Calle 94b # 57a - 26", "3206217113", "900321745-1");
+	@GetMapping("/Empresa")// GetMapping Prueba Empresa
+	public String Empresa(){Empresa empr = new Empresa("STARK INDUSTRIES", "Calle 94b # 57a - 26", "3206217113", "900321745-1");
 
-		// Cambiar nombre
-		emp.setNombre("<b>STARK INDUSTRIES LTDA</b>");
+		// Editar atributos
+		empr.setNombre("<b>STARK INDUSTRIES LTDA</b>");
 
 		// Retorno en pagina
-		return "<br>NOMBRE: " + emp.getNombre() + "</br>" +
-				"<br>DIRECCION: " +  emp.getDireccion() + "</br>" +
-				"<br>TELEFONO: "+ emp.getTelefono() + "</br>" +
-				"<br>NIT: " + emp.getNIT();
+		return "<br>NOMBRE: " + empr.getNombre() + "</br>" +
+				"<br>DIRECCION: " +  empr.getDireccion() + "</br>" +
+				"<br>TELEFONO: "+ empr.getTelefono() + "</br>" +
+				"<br>NIT: " + empr.getNIT();
+	}
+	@GetMapping("/Empleado")// GetMapping Prueba Empresa
+	public String Empleado(){Empleado empl = new Empleado(/*"Nombre", email, "empresa", "rol"*/);
+
+		return "";
+	}
+
+	@GetMapping("/Movimientos")//GetMapping prueba movimientos
+	public String Movimientos(){MovimientoDinero mov = new MovimientoDinero(/*"monto", "concepto", usuario*/);
+		return "";
 	}
 
 		public static void main(String[] args) {

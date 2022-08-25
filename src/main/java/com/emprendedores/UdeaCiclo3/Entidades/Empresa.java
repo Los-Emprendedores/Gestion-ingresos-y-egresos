@@ -3,7 +3,6 @@ package com.emprendedores.UdeaCiclo3.Entidades;
 // Librerias
 import javax.persistence.*;
 
-
 @Entity // Crear Entidad Empresa
 @Table(name="Empresa")
 public class Empresa { //Inicio clase Empresa
