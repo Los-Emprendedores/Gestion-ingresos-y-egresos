@@ -8,13 +8,13 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.emprendedores</groupId>
-	<artifactId>UdeaCiclo3</artifactId>
+	<groupId>com.UdeA</groupId>
+	<artifactId>Ciclo3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>UdeaCiclo3</name>
-	<description>Proyecto para ciclo 3 Udea Mision TIC 2022</description>
+	<name>Ciclo3</name>
+	<description>Proyecto Para el Ciclo 3</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,17 +29,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
