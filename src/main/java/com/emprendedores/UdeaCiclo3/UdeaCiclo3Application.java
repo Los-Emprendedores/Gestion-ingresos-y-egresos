@@ -21,8 +21,10 @@ public class UdeaCiclo3Application {
 	// GetMapping Pueba Empresa
 	@GetMapping("/test")
 	public String test(){Empresa emp = new Empresa("STARK INDUSTRIES", "Calle 94b # 57a - 26", "3206217113", "900321745-1");
+
 		// Cambiar nombre
 		emp.setNombre("<b>STARK INDUSTRIES LTDA</b>");
+
 		// Retorno en pagina
 		return "<br>NOMBRE: " + emp.getNombre() + "</br>" +
 				"<br>DIRECCION: " +  emp.getDireccion() + "</br>" +
