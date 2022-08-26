@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(exclude ={SecurityAutoConfiguration.class})
 public class UdeaCiclo3Application {
-
+/*
 	// GetMapping pueba saludo
 	@GetMapping("/hello")
 	public String hello(){
@@ -33,15 +33,15 @@ public class UdeaCiclo3Application {
 				"<br>NIT: " + empr.getNIT();
 	}
 	@GetMapping("/Empleado")// GetMapping Prueba Empresa
-	public String Empleado(){Empleado empl = new Empleado(/*"Nombre", email, "empresa", "rol"*/);
+	public String Empleado(){Empleado empl = new Empleado(/*"Nombre", email, "empresa", "rol");
 
 		return "";
 	}
 
 	@GetMapping("/Movimientos")//GetMapping prueba movimientos
-	public String Movimientos(){MovimientoDinero mov = new MovimientoDinero(/*"monto", "concepto", usuario*/);
+	public String Movimientos(){MovimientoDinero mov = new MovimientoDinero(/*"monto", "concepto", usuario);
 		return "";
-	}
+	}*/
 
 		public static void main(String[] args) {
 		SpringApplication.run(UdeaCiclo3Application.class, args);
