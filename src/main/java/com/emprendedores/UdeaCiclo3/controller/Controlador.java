@@ -16,12 +16,11 @@ public class Controlador {
     @Autowired
     EmpresaService empresaService;
 
-    @GetMapping({"/Empresas","/VerEmpresas"})
+    @GetMapping ({"/","/VerEmpresas"})
     public String viewEmpresas(Model model){
         List<Empresa> listaEmpresas=empresaService.getAllEmpresas();
         model.addAttribute("emplist", listaEmpresas);
         return "verEmpresas";
     }
-
 
 }
