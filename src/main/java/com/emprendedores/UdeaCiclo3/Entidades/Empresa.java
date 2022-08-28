@@ -3,11 +3,13 @@ package com.emprendedores.UdeaCiclo3.Entidades;
 // Librerias
 import javax.persistence.*;
 
-@Entity // Crear Entidad Empresa
+@Entity // Anotacion para Crear Entidad Empresa
 @Table(name="Empresa")
 public class Empresa { //Inicio clase Empresa
     @Id // Llave primaria
     @GeneratedValue(strategy = GenerationType.AUTO) // Genera Id Automaticamente
+    @OneToMany // Crea relacion de uno a muchos con empleado
+    @JoinColumn(name = "empleado_empresa")
     // Atributos
     private int id;
     private String nombre;
