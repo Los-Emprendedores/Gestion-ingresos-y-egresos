@@ -1,6 +1,6 @@
 package com.emprendedores.UdeaCiclo3.Entidades;
 
-//Libreria
+//Librerias
 import javax.persistence.*;
 
 
@@ -59,4 +59,4 @@ public class MovimientoDinero { //Inicio clase MovimientoDinero
     public void setUsuario(Empleado usuario) {
         this.usuario = usuario;
     }
-}
+} // Finaliza clase MovimientoDinero

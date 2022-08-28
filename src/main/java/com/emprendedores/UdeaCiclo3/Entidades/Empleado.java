@@ -10,6 +10,9 @@ public class Empleado {//Inicio clase Empleado
     @Id // Llave primaria
     @GeneratedValue(strategy = GenerationType.AUTO) // Genera Id Automaticamente
 
+    @OneToMany // Crea relacion de uno a muchos con MovimientoDinero
+    @JoinColumn(name = "movimientosDinero_usuario")
+
     // Atributos
     private int id;
     private String nombre;
