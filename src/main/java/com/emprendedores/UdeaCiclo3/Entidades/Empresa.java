@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class Empresa { //Inicio clase Empresa
     @Id // Llave primaria
     @GeneratedValue(strategy = GenerationType.AUTO) // Genera Id Automaticamente
-    @OneToMany // Crea relacion de uno a muchos con empleado
-    @JoinColumn(name = "empleado_empresa")
+   // @OneToMany // Crea relacion de uno a muchos con empleado
+   // @JoinColumn(name = "empleado_empresa")
     // Atributos
     private int id;
     private String nombre;

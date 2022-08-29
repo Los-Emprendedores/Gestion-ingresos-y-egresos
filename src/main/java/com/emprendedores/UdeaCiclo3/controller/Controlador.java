@@ -20,7 +20,13 @@ public class Controlador {
     public String viewEmpresas(Model model){
         List<Empresa> listaEmpresas=empresaService.getAllEmpresas();
         model.addAttribute("emplist", listaEmpresas);
-        return "verEmpresas";
+        return "verEmpresas"; // Llama a HTML
     }
 
+    @GetMapping("/AgregarEmpresa")
+    public String nuevaEmpresa(Model model){
+        Empresa emp = new Empresa();
+        model.addAttribute("emp", emp);
+        return "agregarEmpresa";
+    }
 }
