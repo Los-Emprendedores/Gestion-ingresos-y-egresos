@@ -19,7 +19,7 @@ public class Controlador {
 
     @Autowired
     EmpresaService empresaService;
-
+    // Esto es el conytrolador
     @GetMapping ({"/","/VerEmpresas"})
     public String viewEmpresas(Model model){
         List<Empresa> listaEmpresas=empresaService.getAllEmpresas();
