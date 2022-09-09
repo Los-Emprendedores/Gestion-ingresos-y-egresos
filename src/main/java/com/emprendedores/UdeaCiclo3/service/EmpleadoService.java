@@ -25,16 +25,18 @@ public class EmpleadoService { // Inicio Clase EmpleadoService
     public Empleado getEmpleadoById(Integer id){
         return empleadoRepository.findById(id).get();
     }
+    //Metodo para buscar empleados por empresa
+    public ArrayList<Empleado> obtenerPorEmpresa(Integer id){
+        return empleadoRepository.findByEmpresa(id);
+    }
+
 
     //Metodo para guardar o actualizar objetos de tipo empleado
-
-    public boolean saveUpdateEmpleado(Empleado empleado){
+    public Empleado saveUpdateEmpleado(Empleado empleado){
+//        return empresaRepository.save(empresa);
         Empleado empl=empleadoRepository.save(empleado);
-        if(empleadoRepository.findById(empl.getId())!=null){
-            return true;
+        return empl;
         }
-        return false;
-    }
 
     // Metodo para eliminar empleados registrados teniendo el id
     public boolean deleteEmpleado(Integer id){

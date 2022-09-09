@@ -1,77 +1,81 @@
 package com.emprendedores.UdeaCiclo3.controller;
 
+import com.emprendedores.UdeaCiclo3.Entidades.Empleado;
 import com.emprendedores.UdeaCiclo3.Entidades.Empresa;
+import com.emprendedores.UdeaCiclo3.service.EmpleadoService;
 import com.emprendedores.UdeaCiclo3.service.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-//@RestController
-@Controller
+@RestController
 public class Controlador {
-
+    // Anotaciones
     @Autowired
     EmpresaService empresaService;
+    @Autowired
+    EmpleadoService empleadoService;
 
-    @GetMapping ({"/","/VerEmpresas"})
-    public String viewEmpresas(Model model, @ModelAttribute("mensaje") String mensaje){
-        List<Empresa> listaEmpresas=empresaService.getAllEmpresas();
-        model.addAttribute("emplist", listaEmpresas);
-        model.addAttribute("mensaje", mensaje);
-        return "verEmpresas"; // Llama a HTML
-    }
-    // Controlador para crear empresa en la base de datos
-    @GetMapping("/AgregarEmpresa")
-    public String nuevaEmpresa(Model model, @ModelAttribute("mensaje") String mensaje){
-        Empresa emp = new Empresa();
-        model.addAttribute("emp", emp);
-        model.addAttribute("mensaje", mensaje);
-        return "agregarEmpresa";
-    }
-    // Controlador para guardar empresa en la base de datos
-    @PostMapping("/GuardarEmpresa")
-    public String guardarEmpresa(Empresa emp, RedirectAttributes redirectAttributes){
-        if (empresaService.saveUpdateEmpresa(emp)==true){
-            redirectAttributes.addFlashAttribute("mensaje", "saveOK");
-            return "redirect:/VerEmpresas";
-        }
-        redirectAttributes.addFlashAttribute("mensaje", "saveError");
-        return "redirect:/AgregarEmpresa";
+    // E M P R E S A S
+    @GetMapping("/enterprises") // para ver JSON de todas la empresas
+    public List<Empresa> verEmpresas(){
+        return empresaService.getAllEmpresas();
     }
 
-    // Controlador para editar empresa en la base de datos
-    @GetMapping("/EditarEmpresa/{id}")
-    public String editarEmpresa(Model model, @PathVariable Integer id, @ModelAttribute("mensaje") String mensaje){
+    @PostMapping("/enterprises") // Guardar el JSON del body como una nueva empresa o registro en la base de datos
+    public Empresa guardarEmpresa(@RequestBody Empresa emp){
+        return this.empresaService.saveUpdateEmpresa(emp);
+    }
+
+    @GetMapping (path = "/enterprises/{id}") // Consultar empresas por Id
+    public Empresa empresaPorId(@PathVariable("id") Integer id){
+        return this.empresaService.getEmpresaById(id);
+    }
+
+    @PatchMapping("/enterprises/{id}") // Actualizar (Patch) empresas por Id
+    public Empresa actualizarEmpresa(@PathVariable("id") Integer id, @RequestBody Empresa empresa){
         Empresa emp=empresaService.getEmpresaById(id);
-        // Se creo atributo para el modelo, que se llame igualmente emp que iráal html para llenar los campos
-        model.addAttribute("emp", emp);
-        model.addAttribute("mensaje", mensaje);
-        return "editarEmpresa";
+        emp.setNombre(empresa.getNombre());
+        emp.setDireccion(empresa.getDireccion());
+        emp.setTelefono(empresa.getTelefono());
+        emp.setNIT(emp.getNIT());
+        return empresaService.saveUpdateEmpresa(emp);
     }
 
-    // Controlador para actualizar la empresa en la base de datos
-    @PostMapping("/ActualizarEmpresa")
-    public String actualizarEmpresa(@ModelAttribute("emp") Empresa emp,RedirectAttributes redirectAttributes){
-        if (empresaService.saveUpdateEmpresa(emp)){
-            redirectAttributes.addFlashAttribute("mensaje", "updateOK");
-            return "redirect:/VerEmpresas";
+    @DeleteMapping ("/enterprises/{id}") // Eliminar Registro de la base de datos}
+    public String deleteEmpresa(@PathVariable("id") Integer id){
+        boolean respuesta = this.empresaService.deleteEmpresa(id);
+        if(respuesta){ // Si respuesta es true
+            return "Se elimino la empresa con id " + id +" correctamente";
         }
-        redirectAttributes.addFlashAttribute("mensaje", "updateError");
-        return "redirect:/EditarEmpresa";
+        else{
+            return "No se pudo eliminar la empresa con id " + id;
+        }
     }
 
-    //Controlador para eliminar la empresa de la base
-    @GetMapping("/EliminarEmpresa/{id}")
-    public String eliminarEmpresa(@PathVariable Integer id, RedirectAttributes redirectAttributes){
-        if (empresaService.deleteEmpresa(id)==true){
-            redirectAttributes.addFlashAttribute("mensaje","deleteOK");
-            return "redirect:/VerEmpresas";
-        }
-        redirectAttributes.addFlashAttribute("mensaje", "deleteError");
-        return "redirect:/VerEmpresas";
+    // E M P L E A D O S
+    @GetMapping ("/empleados") //ver JSON de todos los empleados
+    public List<Empleado> verEmpleados(){
+        return empleadoService.getAllEmpleados();
     }
+
+    @PostMapping ("/empleados") // Guardar un enmpleado nuevo
+    public Optional<Empleado> guardarEmpleado(@RequestBody Empleado empl){
+        return Optional.ofNullable(this.empleadoService.saveUpdateEmpleado(empl));
+    }
+
+    @GetMapping ("/empleados/{id}") // Consultar Empleados por ID
+    public Empleado empleadoPorId(@PathVariable("id") Integer id){
+        return this.empleadoService.getEmpleadoById(id);
+    }
+
+    @GetMapping ("/enterprises/{id}/empleados") // Consultar empleados por empresa
+    public ArrayList<Empleado> empleadoPorEmpresa(@PathVariable("id") Integer id){
+        return this.empleadoService.obtenerPorEmpresa(id);
+
+    }
+
 }
