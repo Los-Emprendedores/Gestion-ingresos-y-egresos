@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="Movimientos")
 public class MovimientoDinero { //Inicio clase MovimientoDinero
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // Genera Id Automaticamente)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Genera Id Automaticamente)
     // Atributos
     private int id;
     private long monto;

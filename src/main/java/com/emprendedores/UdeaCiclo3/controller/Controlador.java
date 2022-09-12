@@ -126,13 +126,23 @@ public class Controlador {
         return movimientoDineroService.saveUpdateMovimiento(mov);
     }
 
-    @DeleteMapping("/movimientos/{id}") // Eliminar empleados por Id
+    @DeleteMapping("/movimientos/{id}") // Eliminar movimientos por Id
     public String DeleteMovimiento(@PathVariable("id") Integer id) {
         boolean respuesta = this.movimientoDineroService.deleteMovimiento(id); // Eliminamos usando el servicio de service
         if (respuesta) { // Si respuesta es true se elimina
-            return "Se eliminó el empleado con id " + id + " correctamente";
+            return "Se eliminó el movimiento con id " + id + " correctamente";
         } else { // Si respuesta es false no se elimina
-            return "No se pudo eliminar el empleado con id " + id;
+            return "No se pudo eliminar el movimiento con id " + id;
         }
+    }
+
+    @GetMapping("/empleados/{id}/movimientos") // Consultar movimientos por id del empleado
+    public ArrayList<MovimientoDinero> movimientoPorEmpleado(@PathVariable ("id") Integer id){
+        return movimientoDineroService.obtenerPorEmpleado(id);
+    }
+
+    @GetMapping("/enterprises/{id}/movimientos")// Consultar movimientos por id de empresa
+    public ArrayList<MovimientoDinero> movimientoPorEmpresa(@PathVariable("id") Integer id){
+        return  movimientoDineroService.obtenerPorEmpresa(id);
     }
 }
