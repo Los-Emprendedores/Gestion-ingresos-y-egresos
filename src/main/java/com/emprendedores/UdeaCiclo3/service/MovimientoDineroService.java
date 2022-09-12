@@ -27,12 +27,24 @@ public class MovimientoDineroService {
 
     //Metodo para guardar o actualizar objetos de tipo movimientoDinero
 
-    public boolean saveUpdateMovimientoDinero(MovimientoDinero movimientoDinero){
+    public MovimientoDinero saveUpdateMovimiento(MovimientoDinero movimientoDinero){
         MovimientoDinero mov=movimientoDineroRepository.save(movimientoDinero);
-        if(movimientoDineroRepository.findById(mov.getId())!=null){
+        return mov;
+    }
+
+    public boolean deleteMovimiento(Integer id){ //Eliminar movimiento con id
+        movimientoDineroRepository.deleteById(id); // Eliminar
+        if (movimientoDineroRepository.findById(id) != null){ //Verificacion del servicio de eliminacion
             return true;
         }
         return false;
     }
 
+    public ArrayList<MovimientoDinero> obtenerPorEmpleado(Integer id) { // se obtiene teniendo en cuenta el id del empleado
+        return this.movimientoDineroRepository.findByEmpleado(id);
+    }
+
+    public ArrayList<MovimientoDinero> obtenerPorEmpresa(Integer id){ // se obtiene teniendo en cuenta el id de la empresa a la que pertenece el empleado
+        return this.movimientoDineroRepository.findByEmpresa(id);
+    }
 }

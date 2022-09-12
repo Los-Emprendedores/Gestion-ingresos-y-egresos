@@ -33,18 +33,17 @@ public class EmpleadoService { // Inicio Clase EmpleadoService
 
     //Metodo para guardar o actualizar objetos de tipo empleado
     public Empleado saveUpdateEmpleado(Empleado empleado){
-//        return empresaRepository.save(empresa);
         Empleado empl=empleadoRepository.save(empleado);
         return empl;
         }
 
     // Metodo para eliminar empleados registrados teniendo el id
     public boolean deleteEmpleado(Integer id){
-        empleadoRepository.deleteById(id);
-        if(getEmpleadoById(id)!= null){
-            return false;
+        empleadoRepository.deleteById(id); // Eliminar
+        if (empleadoRepository.findById(id) != null){ //Verificacion del servicio de eliminacion
+            return true;
         }
-        return true;
+        return false;
     }
 
 } //Finaliza clase EmpleadoService
