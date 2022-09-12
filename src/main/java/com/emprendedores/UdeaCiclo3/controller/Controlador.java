@@ -126,7 +126,7 @@ public class Controlador {
         return movimientoDineroService.saveUpdateMovimiento(mov);
     }
 
-    @DeleteMapping("/movimientos/{id}") // Eliminar empleados por Id
+    @DeleteMapping("/movimientos/{id}") // Eliminar movimientos por Id
     public String DeleteMovimiento(@PathVariable("id") Integer id) {
         boolean respuesta = this.movimientoDineroService.deleteMovimiento(id); // Eliminamos usando el servicio de service
         if (respuesta) { // Si respuesta es true se elimina
