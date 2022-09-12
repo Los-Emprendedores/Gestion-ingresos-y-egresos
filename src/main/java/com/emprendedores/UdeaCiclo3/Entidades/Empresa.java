@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name="Empresa")
 public class Empresa { //Inicio clase Empresa
     @Id // Llave primaria
-    @GeneratedValue(strategy = GenerationType.AUTO) // Genera Id Automaticamente
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Genera Id Automaticamente
    // @OneToMany // Crea relacion de uno a muchos con empleado
    // @JoinColumn(name = "empleado_empresa")
     // Atributos

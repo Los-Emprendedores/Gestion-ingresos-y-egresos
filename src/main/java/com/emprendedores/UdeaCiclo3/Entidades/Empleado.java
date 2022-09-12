@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Empleado {//Inicio clase Empleado
 
     @Id // Llave primaria
-    @GeneratedValue(strategy = GenerationType.AUTO) // Genera Id Automaticamente
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Genera Id Automaticamente
 
    // @OneToMany // Crea relacion de uno a muchos con MovimientoDinero
    // @JoinColumn(name = "movimientosDinero_usuario")
