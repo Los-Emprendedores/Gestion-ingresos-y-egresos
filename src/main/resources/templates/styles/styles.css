@@ -1,8 +1,18 @@
+.imagen{
+    background-image: url(/src/main/resources/templates/images/fondo.jpg);
+}
+
+
 .texto{
     color: blue;
     text-align: center
 }
 
 .cuadro{
-    background-color
+    background-color: chartreuse;
+    width: 200px;
+    height: 50px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
 }
