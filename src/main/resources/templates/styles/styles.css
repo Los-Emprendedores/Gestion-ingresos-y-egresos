@@ -1,18 +1,41 @@
 .imagen{
     background-image: url(/src/main/resources/templates/images/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+.centrar{
+    display: flex;
+    justify-content: center;
+    margin-top 400px;}
+
+.centrarBoton2{
+    display: flex;
+    justify-content: center;
+    margin-top 20px;}
 
 
 .texto{
-    color: blue;
+    color: white;
     text-align: center
+    margin-top: 40px;
 }
 
-.cuadro{
+.contenedor{
     background-color: chartreuse;
-    width: 200px;
-    height: 50px;
-    padding-top: 5px;
+    width: 400px;
+    height: 60px;
+}
+.centrarContenedor{
     display: flex;
     justify-content: center;
+}
+
+.centrarTabla{
+    margin-top: 200px;
+    margin-left: 100px;
+    margin-right: 100px
+    }
+
+.fondo{
+background-color: gold;
 }
