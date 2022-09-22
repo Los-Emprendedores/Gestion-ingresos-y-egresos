@@ -1,21 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/main/resources/templates/styles/styles.css">
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
     <title>Gestion de Empresas</title>
 </head>
 <body class="imagen">
-    <h1 class="texto">Gestion de Empresas</h1>
     <div class="centrar">
-        <button type="button" class="btn btn-primary">Lista de Empresas</button>
+        <h1 class="texto">Bienvenido a la Gestión de Ingresos y Egresos</h1>
     </div>
+    <br>
+    <div class="centrar">
+        <!--<button type="button" class="btn btn-danger"><a th:href="@{/verEmpresas/}">Empresas</a></button> -->
+        <button type="button" class="btn btn-primary"><a th:href="@{/verEmpresas/}">Empresas</a></button>
+    </div>
+    <br>
     <div class="centrarBoton2">
-        <button type="button" class="btn btn-primary">Crear Empresa</button>
+        <button type="button" class="btn btn-primary">Empleados</button>
+    </div>
+    <br>
+    <div class="centrarBoton2">
+        <button type="button" class="btn btn-primary">Movimientos Dinero</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

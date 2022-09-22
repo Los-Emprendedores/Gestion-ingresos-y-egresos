@@ -1,6 +1,5 @@
 .imagen{
-    background-image: url(/src/main/resources/templates/images/fondo.jpg);
-    background-size: cover;
+    background-image: url(/images/fondo.jpg);
     background-repeat: no-repeat;
 }
 .centrar{
