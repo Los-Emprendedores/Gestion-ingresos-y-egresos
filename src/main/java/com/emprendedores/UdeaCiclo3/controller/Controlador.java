@@ -1,4 +1,4 @@
-package com.emprendedores.UdeaCiclo3.controller;
+/* package com.emprendedores.UdeaCiclo3.controller;
 
 import com.emprendedores.UdeaCiclo3.Entidades.Empleado;
 import com.emprendedores.UdeaCiclo3.Entidades.Empresa;
@@ -145,4 +145,4 @@ public class Controlador {
     public ArrayList<MovimientoDinero> movimientoPorEmpresa(@PathVariable("id") Integer id){
         return  movimientoDineroService.obtenerPorEmpresa(id);
     }
-}
+}*/

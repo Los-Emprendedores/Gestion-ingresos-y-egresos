@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Agregar nuevo Movimiento - Ciclo3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    a{
+    color:white;
+    }
+    a:hover {
+    color: black;
+    text-decoration:none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1> Agregue aqui los datos del Movimiento</h1>
+  <br>
+  <!--Crear formulario para llenar los datos del movimiento y guardarlo en el objeto emp -->
+  <form th:action="@{/GuardarMovimiento}" th:object="${mov}" method="post">
+    <!--Campo para Concepto-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
+        <div class="col-md-6">
+          <select th:field="*{concepto}" class="form-control" id="concepto" required="required">
+            <option th:value=1>Papeleria</option>
+            <option th:value=2>Servicios Públicos / Privados</option>
+            <option th:value=3>Operativos</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!--Campo para Monto-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="monto">Valor del movimiento del emleado:</label>
+        <div class="col-md-6">
+          <input type="text" th:field="*{monto}" class="form-control" id="monto" required="required"></div>
+      </div>
+    </div>
+
+    <!--Campo para Usuario Responsablr-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="usuario">Usuario responsable: </label>
+        <div class="col-md-6">
+          <select th:field="*{usuario}" class="form-control" id="usuario" required="required">
+            <option th:each="empleado: ${emplelist}" th:text="${empleado.nombre}" th:value="${empleado.id}"></option>
+          </select></div>
+      </div>
+    </div>
+
+    <!--Campo para fecha-->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="fecha">Fecha del movimiento del emleado:</label>
+        <div class="col-md-6">
+          <input type="date" th:field="*{fecha}" class="form-control" id="fecha" required="required" readonly></div>
+      </div>
+    </div>
+
+
+    <!--Boton para enviar todo y ejecutar accion -->
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-success">Registrar Movimientos</button>
+      </div>
+    </div>
+
+  </form>
+
+  <br>
+  <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+
+</div>
+<script th:inline="javascript">
+  window.onload=function() {
+    document.getElementById("fecha").value=new Date().toJSON().slice(0,10).replace(/-/g,'-');
+  }
+
+</script>
+
+</body>
+</html>
