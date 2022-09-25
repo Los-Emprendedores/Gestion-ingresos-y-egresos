@@ -22,7 +22,7 @@
 <div class="container">
   <h1> Edite aqui los datos del Empleado</h1>
   <br>
-  <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
+  <!--Crear formulario para llenar los datos del empleado y guardarlo en el objeto empl-->
   <form th:action="@{/ActualizarEmpleado}" th:object="${empl}" method="post">
 
     <!--Campo para id-->
@@ -30,7 +30,7 @@
       <div class="form-group col-md-12">
         <label class="col-md-3" for="id">Id del Empleado:</label>
         <div class="col-md-6">
-          <input type="text" th:field="*{id}" class="form-control" id="id" required="required"></div>
+          <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
       </div>
     </div>
 
@@ -46,9 +46,9 @@
     <!--Campo para Correo-->
     <div class="row">
       <div class="form-group col-md-12">
-        <label class="col-md-3" for="correo">Correo del empleado:</label>
+        <label class="col-md-3" for="email">Correo del empleado:</label>
         <div class="col-md-6">
-          <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required"></div>
+          <input type="email" th:field="*{email}" class="form-control" id="email" required="required"></div>
       </div>
     </div>
 
@@ -77,7 +77,7 @@
     </div>
 
 
-    <!--Boton para enviar todo y ejecutar accion -->
+    <!--Boton para enviar-->
     <div class="row">
       <div class="col-md-2">
         <button class="btn btn-success">Editar Empleado</button>

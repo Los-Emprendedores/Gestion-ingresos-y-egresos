@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Agregar Nuevos Empleado</title>
+  <title>Agregar Nuevo Empleado</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
 <div class="container">
   <h1> Agregue aqui los datos del Empleado</h1>
   <br>
-  <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
+  <!--formulario para llenar los datos del empleado y guardarlo en el objeto empl -->
   <form th:action="@{/GuardarEmpleado}" th:object="${empl}" method="post">
     <!--Campo para nombre-->
     <div class="row">
@@ -36,9 +36,9 @@
     <!--Campo para Correo-->
     <div class="row">
       <div class="form-group col-md-12">
-        <label class="col-md-3" for="correo">Correo del empleado:</label>
+        <label class="col-md-3" for="email">Correo del empleado:</label>
         <div class="col-md-6">
-          <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required"></div>
+          <input type="email" th:field="*{email}" class="form-control" id="email" required="required"></div>
       </div>
     </div>
 
@@ -67,7 +67,7 @@
     </div>
 
 
-    <!--Boton para enviar todo y ejecutar accion -->
+    <!--Boton para enviar-->
     <div class="row">
       <div class="col-md-2">
         <button class="btn btn-success">Registrar Empleado</button>

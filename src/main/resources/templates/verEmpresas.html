@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Empresa´s Stark Industries</title>
+    <title>Lista de Empresas Stark Industries</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
         a{
+
         color:white;
         }
         a:hover {
-            color:black;
+            color:white;
             text-decoration=none;
         }
     </style>
@@ -23,9 +25,10 @@
 <body>
 
 <div class="container">
-    <h1> Lista de Empresas Strak Industries</h1>
+    <h1> Lista de Empresas Stark Industries</h1>
     <!--Dibujamos la tabla-->
-    <br><table class="table table-bordered">
+    <br>
+    <table class="table table-hover">
     <tr>
         <th>ID</th>
         <th>Nombre</th>
@@ -81,9 +84,7 @@
             "hideMethod":"fadeOut",
         }
 
-
     }
-
 </script>
 </body>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Lista de Movimientos - Ciclo3</title>
+  <title>Movimientos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,10 +23,11 @@
 <body>
 
 <div class="container">
-  <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
+
   <h1> Lista de Movimientos</h1>
   <!--Dibujamos la tabla-->
-  <br><table class="table table-bordered">
+  <br>
+  <table class="table table-hover">
   <tr>
     <th>ID</th>
     <th>Valor</th>
@@ -52,6 +53,18 @@
 
   </tr>
 </table>
+
+  <!-- Area de navegacion -->
+  <!-- CAMPO PARA EL AREA DE NAVEGACION -->
+  <!-- <nav aria-label="Ejemplo navegacion">
+    <ul class="pagination mt-4">
+      <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
+        <a th:href="@{/VerMovimientos/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
+      </li>
+    </ul>
+  </nav> -->
+
+  <!--Campo para ver todos los movimientos filtrados-->
   <div class="row">
     <div class="form-group col-md-12">
       <label class="col-md-3" for="SumaMontos">Total Movimientos</label>
@@ -64,6 +77,8 @@
   <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
   <br><br>
   <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Lista de Movimientos</a></button>
+  <br><br>
+  <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
 
 </div>
 <script th:inline="javascript">

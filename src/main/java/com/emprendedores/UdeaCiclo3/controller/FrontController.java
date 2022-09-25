@@ -1,6 +1,7 @@
 package com.emprendedores.UdeaCiclo3.controller;
 
 // Importaciones
+
 import com.emprendedores.UdeaCiclo3.Entidades.Empleado;
 import com.emprendedores.UdeaCiclo3.Entidades.Empresa;
 import com.emprendedores.UdeaCiclo3.Entidades.MovimientoDinero;
@@ -10,16 +11,13 @@ import com.emprendedores.UdeaCiclo3.service.MovimientoDineroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller // Anotacion de controlador
-public class FrontController {
+public class FrontController { //Inicio Clase FrontController
     // Servicios Autowires
     @Autowired // Conexion a EmpresaService
     EmpresaService empresaService;
@@ -133,7 +131,7 @@ public class FrontController {
     // Controlador para editar empleados en la base de datos
     @GetMapping("/EditarEmpleado/{id}")
     public String editarEmpleado(Model model, @PathVariable Integer id, @ModelAttribute("mensaje") String mensaje) {
-        Empleado empl = empleadoService.getEmpleadoById(id); //.get
+        Empleado empl = empleadoService.getEmpleadoById(id); //.get()
         //Creamos un atributo para el modelo, que se llame igualmente emp y es el que ira al html para llenar o alimentar campos
         model.addAttribute("empl", empl);
         model.addAttribute("mensaje", mensaje);
@@ -174,13 +172,13 @@ public class FrontController {
     // M O V I M I E N T O S
 
 // Controlador para ver los movimeintos existentes
-    @GetMapping ({"/VerMovimientos"})
-    public String viewMovimientos(Model model, @ModelAttribute("mensaje") String mensaje){
-    List<MovimientoDinero> listaMovimientos=movimientoService.getAllMovimientos();
+@RequestMapping ("/VerMovimientos")// Controlador que nos lleva al template donde veremos todos los movimientos
+public String viewMovimientos(Model model, @ModelAttribute("mensaje") String mensaje){
+    List<MovimientoDinero> listaMovimientos= movimientoService.getAllMovimientos();
     model.addAttribute("movlist",listaMovimientos);
     model.addAttribute("mensaje",mensaje);
-    long sumaMonto=movimientoService.obtenerSumaMontos();
-    model.addAttribute("SumaMontos",sumaMonto);
+    Long sumaMonto=movimientoService.obtenerSumaMontos();
+    model.addAttribute("SumaMontos",sumaMonto);//Mandamos la suma de todos los montos a la plantilla
     return "verMovimientos"; //Llamamos al HTML
     }
     //Controlador que nos lleva al template para crear movimientos
@@ -258,7 +256,7 @@ public class FrontController {
         model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos";
 
-    }
+    } // Fin clase FrontController
 
 }
 

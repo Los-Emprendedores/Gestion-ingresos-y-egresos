@@ -1,5 +1,6 @@
 /* package com.emprendedores.UdeaCiclo3.controller;
 
+// Importaciones
 import com.emprendedores.UdeaCiclo3.Entidades.Empleado;
 import com.emprendedores.UdeaCiclo3.Entidades.Empresa;
 import com.emprendedores.UdeaCiclo3.Entidades.MovimientoDinero;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-public class Controlador {
-    // Anotaciones
+@RestController // Anotacion resta Controller
+public class Controlador { // Inicio clase controlador
+    // Servicios Autowires
     @Autowired
     EmpresaService empresaService;
     @Autowired
@@ -23,6 +24,7 @@ public class Controlador {
 
     @Autowired
     MovimientoDineroService movimientoDineroService;
+//----------------------------------------------------------------------------------------------------------------------
 
     // E M P R E S A S
     @GetMapping("/enterprises") // para ver JSON de todas la empresas
@@ -59,6 +61,7 @@ public class Controlador {
             return "No se pudo eliminar la empresa con id " + id;
         }
     }
+//----------------------------------------------------------------------------------------------------------------------
 
     // E M P L E A D O S
     @GetMapping("/empleados") //ver JSON de todos los empleados
@@ -100,6 +103,7 @@ public class Controlador {
             return "No se pudo eliminar el empleado con id " + id;
         }
     }
+//----------------------------------------------------------------------------------------------------------------------
 
     // M O V I M I E N T O S - D I N E R O
     @GetMapping("/movimientos") // consultar todos los movimientos
@@ -145,4 +149,4 @@ public class Controlador {
     public ArrayList<MovimientoDinero> movimientoPorEmpresa(@PathVariable("id") Integer id){
         return  movimientoDineroService.obtenerPorEmpresa(id);
     }
-}*/
+} // Fin clase Controlador*/

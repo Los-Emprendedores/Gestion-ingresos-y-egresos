@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Lista de Empleados - Ciclo3</title>
+  <title>Lista de Empleados</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,9 +23,9 @@
 <body>
 
 <div class="container">
-  <h1> Lista de Empleado</h1>
+  <h1> Lista de Empleados</h1>
   <!--Dibujamos la tabla-->
-  <br><table class="table table-bordered">
+  <br><table class="table table-hover">
   <tr>
     <th>ID</th>
     <th>Nombre</th>
@@ -38,11 +38,11 @@
   </tr>
 
   <!--Llenamos la tabla dibujada-->
-  <!--En nuestro controller, creamos en viewEmpleados un modelo con un atributo llamado emplist donde esta guardada la lista de todas los empleados-->
+  <!--En FrontController, creamos en verEmpleados un modelo con un atributo llamado emplist donde esta guardada la lista de todas los empleados-->
   <tr th:each="empleado: ${emplelist}">
     <td th:text="${empleado.id}"></td>
     <td th:text="${empleado.nombre}"></td>
-    <td th:text="${empleado.correo}"></td>
+    <td th:text="${empleado.email}"></td>
     <td th:text="${empleado.empresa.nombre}"></td>
     <td th:if="${empleado.rol=='1'}">Administrativo</td>
     <td th:if="${empleado.rol=='2'}">Operativo</td>
@@ -53,7 +53,7 @@
   </tr>
 </table>
 
-  <!-- vamos a crear un botón que sirva para agregar empleado-->
+  <!--botón para agregar empleado-->
   <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button>
   <br><br>
   <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Lista de Empresas</a></button>
@@ -64,7 +64,7 @@
 
         var msg= [[${mensaje}]];
         if (msg == "saveOK"){
-            Command : toastr["success"]("Empledo registrado con éxito!")
+            Command : toastr["success"]("Empledo creado con éxito!")
             }
         else if (msg == "updateOK"){
             Command : toastr["success"]("Empleado actualizado con éxito!")
@@ -73,7 +73,7 @@
             Command : toastr["error"]("Empleado eliminada con éxito!")
         }
         else if (msg == "deleteError"){
-            Command : toastr["error"]("Empleado no ha sido eliminada!")
+            Command : toastr["error"]("Empleado no ha sido eliminado!")
         }
         toastr.options={
             "positionClass": "toast-top-right",
