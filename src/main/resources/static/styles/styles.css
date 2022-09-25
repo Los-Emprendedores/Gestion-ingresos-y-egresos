@@ -1,0 +1,58 @@
+.body1{
+    background-image: url(/images/fondo.jpg);
+    background-repeat: no-repeat;
+}
+.div1{
+position: absolute;
+width: 224px;
+left: 0px;
+top: 0px;
+background: #D9D9D9;
+}
+
+.logo{
+position: absolute;
+width: 162px;
+height: 72px;
+left: 26px;
+top: 57px;
+
+background-image: url(/images/Logo.jpeg);
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    margin-top 400px;}
+
+.centrarBoton2{
+    display: flex;
+    justify-content: center;
+    margin-top 20px;}
+
+
+.texto{
+    color: white;
+    text-align: center
+    margin-top: 40px;
+}
+
+.contenedor{
+    background-color: chartreuse;
+    width: 400px;
+    height: 60px;
+}
+.centrarContenedor{
+    display: flex;
+    justify-content: center;
+}
+
+.centrarTabla{
+    margin-top: 200px;
+    margin-left: 100px;
+    margin-right: 100px
+    }
+
+.fondo{
+background-color: gold;
+}
