@@ -1,4 +1,4 @@
-package com.emprendedores.UdeaCiclo3.controller;
+/* package com.emprendedores.UdeaCiclo3.controller;
 
 import com.emprendedores.UdeaCiclo3.Entidades.Empresa;
 import com.emprendedores.UdeaCiclo3.service.EmpresaService;
@@ -71,4 +71,4 @@ public class Controlador {
         }
         return "redirect:/VerEmpresas";
     }
-}
+} */
