@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Empleados</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <style>
+        a{
+        color:white;
+        }
+        a:hover {
+            color:black;
+            text-decoration=none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+  <h1> Lista de Empleados</h1>
+  <!--Dibujamos la tabla-->
+  <br><table class="table table-hover">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Empresa</th>
+    <th>Rol</th>
+    <th>Movimientos</th>
+    <th>Editar</th>
+    <th>Eliminar</th>
+  </tr>
+
+  <!--Llenamos la tabla dibujada-->
+  <!--En FrontController, creamos en verEmpleados un modelo con un atributo llamado emplist donde esta guardada la lista de todas los empleados-->
+  <tr th:each="empleado: ${emplelist}">
+    <td th:text="${empleado.id}"></td>
+    <td th:text="${empleado.nombre}"></td>
+    <td th:text="${empleado.email}"></td>
+    <td th:text="${empleado.empresa.nombre}"></td>
+    <td th:if="${empleado.rol=='1'}">Administrativo</td>
+    <td th:if="${empleado.rol=='2'}">Operativo</td>
+    <td><button type="button" class="btn btn-info"><a th:href="@{/Empleado/{id}/Movimientos (id=${empleado.id})}">Ver</a></button></td>
+    <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}(id=${empleado.id})}">Editar</a></button></td>
+    <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleado.id})}">Eliminar</a></button></td>
+
+  </tr>
+</table>
+
+  <!--botón para agregar empleado-->
+  <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button>
+  <br><br>
+  <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Lista de Empresas</a></button>
+
+</div>
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg= [[${mensaje}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empledo creado con éxito!")
+            }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empleado actualizado con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empleado eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empleado no ha sido eliminado!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+    }
+</script>
+</body>
+
+</html>
