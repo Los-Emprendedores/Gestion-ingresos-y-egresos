@@ -256,7 +256,7 @@ public String viewMovimientos(Model model, @ModelAttribute("mensaje") String men
         model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos";
 
-    } // Fin clase FrontController
+    }
 
-}
+} // Fin clase FrontController
 
