@@ -9,6 +9,9 @@ import com.emprendedores.UdeaCiclo3.service.EmpleadoService;
 import com.emprendedores.UdeaCiclo3.service.EmpresaService;
 import com.emprendedores.UdeaCiclo3.service.MovimientoDineroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -120,6 +123,8 @@ public class FrontController { //Inicio Clase FrontController
     // Controlador para guardar empleados en la base de datos
     @PostMapping("/GuardarEmpleado")
     public String guardarEmpleado(Empleado empl, RedirectAttributes redirectAttributes) {
+        String passEncriptada = passwordEncoder().encode(empl.getPassword()); // encripta las contraseñas
+        empl.setPassword(passEncriptada);
         if (empleadoService.saveUpdateEmpleado(empl) == true) {
             redirectAttributes.addFlashAttribute("mensaje", "saveOK");
             return "redirect:/VerEmpleado";
@@ -143,6 +148,12 @@ public class FrontController { //Inicio Clase FrontController
     // Controlador para actualizar el empleado en la base de datos
     @PostMapping("/ActualizarEmpleado")
     public String updateEmpleado(@ModelAttribute("empl") Empleado empl, RedirectAttributes redirectAttributes) {
+        Integer id=empl.getId(); //Saca el id del objeto empl
+        String Oldpass=empleadoService.getEmpleadoById(id).getPassword();
+        if(!empl.getPassword().equals(Oldpass)){
+            String passEncriptada = passwordEncoder().encode(empl.getPassword()); // encripta las contraseñas
+            empl.setPassword(passEncriptada);
+        }
         if (empleadoService.saveUpdateEmpleado(empl)) {
             redirectAttributes.addFlashAttribute("mensaje", "updateOK");
             return "redirect:/VerEmpleado";
@@ -256,6 +267,21 @@ public String viewMovimientos(Model model, @ModelAttribute("mensaje") String men
         model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos";
 
+    }
+
+//----------------------------------------------------------------------------------------------------------------------
+    // Controlador para acceso denegado
+    @RequestMapping(value = "/Denegado")
+    public String accesoDenegado(){
+        return "accessDenied";
+    }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+    // Encriptar Contraseñas
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
 } // Fin clase FrontController
