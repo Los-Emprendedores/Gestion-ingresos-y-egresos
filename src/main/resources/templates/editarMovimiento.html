@@ -58,16 +58,18 @@
             </div>
         </div>
 
-        <!--Campo para Usuario Responsablr-->
+        <!--Campo para Usuario Responsable-->
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="usuario">Usuario responsable: </label>
+                <label class="col-md-3" for="usuario">Responsable del movimiento:</label>
                 <div class="col-md-6">
-                    <select th:field="*{usuario}" class="form-control" id="usuario" required="required">
-                        <option th:each="empleado: ${emplelist}" th:text="${empleado.nombre}" th:value="${empleado.id}"></option>
-                    </select></div>
+                    <select th:field="*{usuario}" class="form-control" id="usuario" required="required" readonly>
+                        <option th:value=*{usuario.id} th:text=*{usuario.email}></option>
+                    </select>
+                </div>
             </div>
         </div>
+
         <!--Campo para fecha-->
         <div class="row">
             <div class="form-group col-md-12">

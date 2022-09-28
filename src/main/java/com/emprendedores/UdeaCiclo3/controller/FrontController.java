@@ -10,6 +10,8 @@ import com.emprendedores.UdeaCiclo3.service.EmpresaService;
 import com.emprendedores.UdeaCiclo3.service.MovimientoDineroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -198,8 +200,10 @@ public String viewMovimientos(Model model, @ModelAttribute("mensaje") String men
         MovimientoDinero movimiento= new MovimientoDinero();
         model.addAttribute("mov",movimiento);
         model.addAttribute("mensaje",mensaje);
-        List<Empleado> listaEmpleados=empleadoService.getAllEmpleados();
-        model.addAttribute("emplelist",listaEmpleados);
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String email= auth.getName();
+        Integer idEmpleado=movimientoService.IdPorCorreo(email);
+        model.addAttribute("idEmpleado",idEmpleado);
         return "agregarMovimiento";
     }
 // Controlador para gurdar loa movimientos realizados
@@ -216,7 +220,7 @@ public String viewMovimientos(Model model, @ModelAttribute("mensaje") String men
     @GetMapping("/EditarMovimiento/{id}")
     public String editarMovimiento(Model model, @PathVariable Integer id, @ModelAttribute("mensaje") String mensaje){
         MovimientoDinero mov=movimientoService.getMovimientoDineroById(id);
-        //Creamos un atributo para el modelo, que se llame igualmente emp y es el que ira al html para llenar o alimentar campos
+        //Atributo para el modelo, emp,  ira al html para llenar o alimentar campos
         model.addAttribute("mov",mov);
         model.addAttribute("mensaje", mensaje);
         List<Empleado> listaEmpleados = empleadoService.getAllEmpleados();
