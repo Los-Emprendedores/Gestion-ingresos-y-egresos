@@ -1,5 +1,12 @@
-texto1 {
+.tabla {
+background-color: #d4e8dc;
 
+}
+
+.botones{
+    top: 50%;
+     left: 50%;
+     margin: -25px 0 0 -25px;
 }
 
 .titulo {
@@ -9,47 +16,9 @@ background-color: #000000;
   background-color: #519090;
   height: 900px;
 }
-
 .menu .navbar-nav a{
   color: ghostwhite!important;
   font-size: 20px;
-}
-
-.contenido{
-    background-image: url(/images/fondo.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    height: 900px;
-}
-
-.boton1 {
-    position: absolute;
-    width: 212px;
-    height: 186px;
-    left: 750px;
-    top: 450px;
-    font-size: 20px;
-}
-
-.boton2{
-    position: absolute;
-    width: 212px;
-    height: 186px;
-    left: 1000px;
-    top: 450px;
-    font-size: 20px;
-}
-
-.boton3{
-    position: absolute;
-    width: 212px;
-    height: 186px;
-    left: 1250px;
-    top: 450px;
-    font-size: 20px;
-    word-wrap: break-word;
 }
 
 .nav-item{
@@ -58,10 +27,50 @@ background-color: #000000;
 
 .navbar-nav{
       width: 100%;
+
 }
+
+.contenido{
+  align-items: center;
+  background-image: url(/images/fondo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 900px;
+}
+
+.boton1 {
+    width: 212px;
+    height: 186px;
+    left: 260px;
+    top: 450px;
+    font-size: 30px;
+}
+
+.boton2{
+    width: 212px;
+    height: 186px;
+    left: 1000px;
+    top: 450px;
+    font-size: 30px;
+}
+
+.boton3{
+    width: 212px;
+    height: 186px;
+    left: 1250px;
+    top: 450px;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+
 
 h1 {
   font-family: 'Lato', gill sans!important;
+}
+h1 {
+  font-family: 'Lato', sans-serif!important;
 }
 
 .list-group-item{
@@ -78,6 +87,9 @@ h1 {
   display: block;
 }
 
+.site-links {
+  padding-top: 20%;
+}
 
 .site-links a{
   color: ghostwhite;
@@ -92,11 +104,6 @@ h1 {
 }
 
 
-img{
-  width: 100%;
-}
-
-
 .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
     position: relative;
     width: 100%;
@@ -105,7 +112,7 @@ img{
     padding-left: 0!important;
   }
 
-
 .text li{
   display: inline;
 }
+

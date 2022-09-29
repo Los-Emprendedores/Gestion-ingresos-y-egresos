@@ -1,28 +1,148 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Editar Empresa - Ciclo3</title>
+  <title>Editar Empresas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" th:href="@{/styles/styles.css}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}"> <!-- Hoja de Estilos-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+        integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <style>
-    a{
-    color:white;
-    }
-    a:hover {
-    color: black;
-    text-decoration:none;
-    }
-</style>
+        a{
+
+        color:white;
+        }
+        a:hover {
+            color:white;
+            text-decoration=none;
+        }
+    </style>
 </head>
-<body class="imagen">
+<body>
+<div class="w3-row titulo">
+  <div class="w3-half" style="width:300px"><img src="images/Logo.jpeg" width="300" height="200" th:href="@{/index}"></div>
+  <div class="w3-black w3-center mw-100"> <br>
+    <h1 class="w3-text-white h1"><b>Editar Empresa <br>Stark Industries</b></h1>
+    <p class="w3-opacity" style="float:right">User: [[${#httpServletRequest.remoteUser}]]</p>
+  </div>
+</div>
+<div class="w3-row">
+  <div class="w3-quarter">
+    <div class="menu">
+      <nav class="navbar">
+        <ul class="navbar-nav list-group">
+          <br>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerEmpresas}">Empresas</a>
+          </li>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerEmpleado}">Empleados</a>
+          </li>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerMovimientos}">Movimientos de Dinero</a>
+          </li>
+        </ul>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+  <div class="w3-rest">
+    <div class="contenido">
+      <div>
+        <br>
+        <button type="button" class="btn btn-danger"  style="float:right"><a th:href="@{/logout}">Cerrar sesión</a></button>
+        <br>
+        <br>
+      </div>
+      <div class="w3-row">
+        <div class="container tabla">
+          <br>
+          <h1> Edite aqui los datos de Empresa</h1>
+          <br>
+          <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
+          <form th:action="@{/ActualizarEmpresa}" th:object="${emp}" method="post">
+
+            <!--Campo para id-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="id">ID de la Empresa:</label>
+                <div class="col-md-6">
+                  <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+              </div>
+            </div>
+
+
+
+            <!--Campo para nombre-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="nombre">Nombre de la Empresa:</label>
+                <div class="col-md-6">
+                  <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required="required"></div>
+              </div>
+            </div>
+
+            <!--Campo para direccion-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="direccion">Direccion de la Empresa:</label>
+                <div class="col-md-6">
+                  <input type="text" th:field="*{direccion}" class="form-control" id="direccion" required="required"></div>
+              </div>
+            </div>
+
+            <!--Campo para telefono-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="telefono">Telefono de la Empresa:</label>
+                <div class="col-md-6">
+                  <input type="text" th:field="*{telefono}" class="form-control" id="telefono" required="required"></div>
+              </div>
+            </div>
+
+            <!--Campo para NIT-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="NIT">NIT o RUT de la Empresa:</label>
+                <div class="col-md-6">
+                  <input type="text" th:field="*{NIT}" class="form-control" id="NIT" required="required"></div>
+              </div>
+            </div>
+
+
+            <!--Boton para enviar todo y ejecutar accion -->
+            <div class="row">
+              <div class="col-md-2">
+                <button class="btn btn-success">Actualizar Empresa</button>
+              </div>
+            </div>
+
+          </form>
+
+          <br>
+          <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <div class="container">
   <br>
-  <button type="button" class="btn btn-danger"  style="float:right"><a th:href="@{/logout}">Cerrar sesión</a></button>
   <h1> Edite aqui los datos de Empresa</h1>
   <br>
   <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
