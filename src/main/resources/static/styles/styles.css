@@ -14,7 +14,7 @@ background-color: #000000;
 }
 .menu {
   background-color: #519090;
-  height: 900px;
+  height: 1000px;
 }
 .menu .navbar-nav a{
   color: ghostwhite!important;
@@ -37,7 +37,7 @@ background-color: #000000;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-  height: 900px;
+  height: 1000px;
 }
 
 .boton1 {

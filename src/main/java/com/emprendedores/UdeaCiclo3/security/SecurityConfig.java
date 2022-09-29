@@ -34,13 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","VerEmpresas/**").hasRole("ADMIN")
+                .antMatchers("/","VerEmpresas/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/VerEmpleado/**").hasRole("ADMIN")
                 .antMatchers("/Empresa/**").hasRole("ADMIN")
                 .antMatchers("/Empleado/**").hasRole("ADMIN")
                 .antMatchers("/VerMovimientos/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/AgregarMovimiento/**").hasAnyRole("ADMIN","USER")
-                .antMatchers("/EditarMovimiento/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/EditarMovimiento/**").hasAnyRole("ADMIN")
                 .and().formLogin().successHandler(customSuccessHandler)
                 .and().exceptionHandling().accessDeniedPage("/Denegado")
                 .and().logout().permitAll().and().csrf();
