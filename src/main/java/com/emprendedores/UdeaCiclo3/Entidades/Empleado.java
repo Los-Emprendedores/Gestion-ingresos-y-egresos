@@ -21,16 +21,20 @@ public class Empleado {//Inicio clase Empleado
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
     private String rol;
+    private String password;
+    private Boolean estado;
 
     // Constructores
     public Empleado() {
     }
 
-    public Empleado(String nombre, String email, Empresa empresa, String rol) {
+    public Empleado(String nombre, String email, Empresa empresa, String rol, String password, Boolean estado) {
         this.nombre = nombre;
         this.email = email;
         this.empresa = empresa;
         this.rol = rol;
+        this.password = password;
+        this.estado = estado;
     }
 
 // Getters and Setters
@@ -73,5 +77,21 @@ public class Empleado {//Inicio clase Empleado
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 } // Fin clase Empleado

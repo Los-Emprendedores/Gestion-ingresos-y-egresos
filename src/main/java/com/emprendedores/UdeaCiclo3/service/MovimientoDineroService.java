@@ -51,6 +51,7 @@ public class MovimientoDineroService {
         return this.movimientoDineroRepository.findByEmpresa(id);
     }
 
+    //Servicio para ver la suma de todos los montos
     public Long obtenerSumaMontos() {
         return movimientoDineroRepository.SumaMonto();
     }
@@ -59,5 +60,10 @@ public class MovimientoDineroService {
     }
     public Long MontosPorEmpresa(Integer id) {
         return movimientoDineroRepository.MontosPorEmpresa(id);
+    }
+
+    // Servicio que permite conseguir el id de un empleado si tenemos el corre
+    public Integer IdPorCorreo(String Email){
+        return movimientoDineroRepository.idPorEmail(Email);
     }
 }

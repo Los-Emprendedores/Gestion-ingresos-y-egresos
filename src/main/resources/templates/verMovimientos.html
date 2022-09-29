@@ -4,82 +4,131 @@
   <title>Movimientos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}"> <!-- Hoja de Estilos-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+        integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <style>
         a{
+
         color:white;
         }
         a:hover {
-            color:black;
+            color:white;
             text-decoration=none;
         }
     </style>
-
 </head>
 <body>
+<body>
 
-<div class="container">
+<div class="w3-row titulo">
+  <div class="w3-half" style="width:300px"><img src="images/Logo.jpeg" width="300" height="200" th:href="@{/index}"> </div>
+  <div class="w3-black w3-center mw-100"> <br>
+    <h1 class="w3-text-white h1"><b>Movimientos realizados en <br>Stark Industries</b></h1>
+    <p class="w3-opacity" style="float:right">User: [[${#httpServletRequest.remoteUser}]]</p>
+  </div>
+</div>
 
-  <h1> Lista de Movimientos</h1>
-  <!--Dibujamos la tabla-->
-  <br>
-  <table class="table table-hover">
-  <tr>
-    <th>ID</th>
-    <th>Valor</th>
-    <th>Concepto</th>
-    <th>Usuario Responsable</th>
-    <th>Fecha del Movimiento</th>
-    <th>Editar</th>
-    <th>Eliminar</th>
-  </tr>
+<div class="w3-row">
+  <div class="w3-quarter">
+    <div class="menu">
+      <nav class="navbar">
+        <ul class="navbar-nav list-group">
+          <br>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerEmpresas}">Empresas</a>
+          </li>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerEmpleado}">Empleados</a>
+          </li>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerMovimientos}">Movimientos de Dinero</a>
+          </li>
+        </ul>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+  <div class="w3-rest">
+    <div class="contenido">
+      <div>
+        <br>
+        <button type="button" class="btn btn-danger"  style="float:right"><a th:href="@{/logout}">Cerrar sesión</a></button>
+        <br>
+        <br>
+      </div>
+      <div class="w3-row">
+        <div class="container tabla">
+          <br>
+          <br>
+          <h1> Lista de Movimientos</h1>
+          <!--Dibujamos la tabla-->
+          <br>
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>Valor</th>
+              <th>Concepto</th>
+              <th>Usuario Responsable</th>
+              <th>Fecha del Movimiento</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
 
-  <!--Llenamos la tabla dibujada-->
-  <!--En nuestro controller, creamos en viewMovimientos un modelo con un atributo llamado movlist donde esta guardada la lista de todas los empleados-->
-  <tr th:each="movimiento: ${movlist}">
-    <td th:text="${movimiento.id}"></td>
-    <td th:text="${#numbers.formatCurrency(movimiento.monto)}"></td>
-    <td th:if="${movimiento.concepto=='1'}">Papeleria</td>
-    <td th:if="${movimiento.concepto=='2'}">Servicios Públicos / Privados</td>
-    <td th:if="${movimiento.concepto=='3'}">Operativos</td>
-    <td th:text="${movimiento.usuario.nombre}"></td>
-    <td th:text="${#dates.format(movimiento.fecha, 'dd/MM/yyyy')}"></td>
-    <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}(id=${movimiento.id})}">Editar</a></button></td>
-    <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
+            <!--Llenamos la tabla dibujada-->
+            <!--En nuestro controller, creamos en viewMovimientos un modelo con un atributo llamado movlist donde esta guardada la lista de todas los empleados-->
+            <tr th:each="movimiento: ${movlist}">
+              <td th:text="${movimiento.id}"></td>
+              <td th:text="${#numbers.formatCurrency(movimiento.monto)}"></td>
+              <td th:if="${movimiento.concepto=='1'}">Papeleria</td>
+              <td th:if="${movimiento.concepto=='2'}">Servicios Públicos / Privados</td>
+              <td th:if="${movimiento.concepto=='3'}">Operativos</td>
+              <td th:text="${movimiento.usuario.nombre}"></td>
+              <td th:text="${#dates.format(movimiento.fecha, 'dd/MM/yyyy')}"></td>
+              <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}(id=${movimiento.id})}">Editar</a></button></td>
+              <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
 
-  </tr>
-</table>
+            </tr>
+          </table>
 
-  <!-- Area de navegacion -->
-  <!-- CAMPO PARA EL AREA DE NAVEGACION -->
-  <!-- <nav aria-label="Ejemplo navegacion">
-    <ul class="pagination mt-4">
-      <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
-        <a th:href="@{/VerMovimientos/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
-      </li>
-    </ul>
-  </nav> -->
+          <!-- Area de navegacion -->
+          <!-- CAMPO PARA EL AREA DE NAVEGACION -->
+          <!-- <nav aria-label="Ejemplo navegacion">
+            <ul class="pagination mt-4">
+              <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
+                <a th:href="@{/VerMovimientos/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
+              </li>
+            </ul>
+          </nav> -->
 
-  <!--Campo para ver todos los movimientos filtrados-->
-  <div class="row">
-    <div class="form-group col-md-12">
-      <label class="col-md-3" for="SumaMontos">Total Movimientos</label>
-      <div class="col-md-6">
-        <p th:text="${SumaMontos}" class="form-control" id="SumaMontos"></p>
+          <!--Campo para ver todos los movimientos filtrados-->
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label class="col-md-3" for="SumaMontos">Total Movimientos</label>
+              <div class="col-md-6">
+                <p th:text="${SumaMontos}" class="form-control" id="SumaMontos"></p>
+              </div>
+            </div>
+          </div>
+          <!-- vamos a crear un botón que sirva para agregar empleado-->
+          <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
+          <br>
+          <br>
+        </div>
       </div>
     </div>
   </div>
-  <!-- vamos a crear un botón que sirva para agregar empleado-->
-  <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
-  <br><br>
-  <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Lista de Movimientos</a></button>
-  <br><br>
-  <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
-
 </div>
 <script th:inline="javascript">
     window.onload=function(){
@@ -101,13 +150,9 @@
              "positionClass": "toast-top-right",
             "showDuration":"300",
             "showMethod":"fadeIn",
-            "hideMethod":"fadeOut",
+            "hideMethod":"fadeOut"
         }
-
-
     }
-
 </script>
 </body>
-
 </html>

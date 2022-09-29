@@ -1,92 +1,144 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Agregar nuevo Movimiento - Ciclo3</title>
+  <title>Agregar Movimientos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}"> <!-- Hoja de Estilos-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+        integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <style>
-    a{
-    color:white;
-    }
-    a:hover {
-    color: black;
-    text-decoration:none;
-    }
-</style>
+        a{
+
+        color:white;
+        }
+        a:hover {
+            color:white;
+            text-decoration=none;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <h1> Agregue aqui los datos del Movimiento</h1>
-  <br>
-  <!--Crear formulario para llenar los datos del movimiento y guardarlo en el objeto emp -->
-  <form th:action="@{/GuardarMovimiento}" th:object="${mov}" method="post">
-    <!--Campo para Concepto-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
-        <div class="col-md-6">
-          <select th:field="*{concepto}" class="form-control" id="concepto" required="required">
-            <option th:value=1>Papeleria</option>
-            <option th:value=2>Servicios Públicos / Privados</option>
-            <option th:value=3>Operativos</option>
-          </select>
+<div class="w3-row titulo">
+  <div class="w3-half" style="width:300px"><img src="images/Logo.jpeg" width="300" height="200" th:href="@{/index}"> </div>
+  <div class="w3-black w3-center mw-100"> <br>
+    <h1 class="w3-text-white h1"><b>Agregar Movimientos a <br>Stark Industries</b></h1>
+    <p class="w3-opacity" style="float:right">User: [[${#httpServletRequest.remoteUser}]]</p>
+  </div>
+</div>
+
+<div class="w3-row">
+  <div class="w3-quarter">
+    <div class="menu">
+      <nav class="navbar">
+        <ul class="navbar-nav list-group">
+          <br>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerEmpresas}">Empresas</a>
+          </li>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerEmpleado}">Empleados</a>
+          </li>
+          <li class="nav-item text-center list-group-item">
+            <a class="nav-link" th:href="@{/VerMovimientos}">Movimientos de Dinero</a>
+          </li>
+        </ul>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+  <div class="w3-rest">
+    <div class="contenido">
+      <div>
+        <br>
+        <button type="button" class="btn btn-danger"  style="float:right"><a th:href="@{/logout}">Cerrar sesión</a></button>
+        <br>
+        <br>
+      </div>
+
+      <div class="w3-row">
+        <div class="container tabla">
+          <br>
+          <br>
+          <h1> Agregue aqui los datos del Movimiento</h1>
+          <br>
+          <!--Crear formulario para llenar los datos del movimiento y guardarlo en el objeto emp -->
+          <form th:action="@{/GuardarMovimiento}" th:object="${mov}" method="post">
+            <!--Campo para Concepto-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
+                <div class="col-md-6">
+                  <select th:field="*{concepto}" class="form-control" id="concepto" required="required">
+                    <option th:value=1>Papeleria</option>
+                    <option th:value=2>Servicios Públicos / Privados</option>
+                    <option th:value=3>Operativos</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!--Campo para Monto-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="monto">Valor del movimiento del emleado:</label>
+                <div class="col-md-6">
+                  <input type="text" th:field="*{monto}" class="form-control" id="monto" required="required"></div>
+              </div>
+            </div>
+
+            <!--Campo para Usuario Responsable-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="usuario">Usuario responsable: </label>
+                <div class="col-md-6">
+                  <select th:field="*{usuario}" class="form-control" id="usuario" required="required" readonly>
+                    <option th:text="${#httpServletRequest.remoteUser}" th:value="${idEmpleado}" ></option>
+                  </select></div>
+              </div>
+            </div>
+
+            <!--Campo para fecha-->
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-3" for="fecha">Fecha del movimiento del empleado:</label>
+                <div class="col-md-6">
+                  <input type="date" th:field="*{fecha}" class="form-control" id="fecha" required="required" readonly></div>
+              </div>
+            </div>
+
+            <!--Boton para enviar todo y ejecutar accion -->
+            <div class="row">
+              <div class="col-md-2">
+                <button class="btn btn-success">Registrar Movimientos</button>
+              </div>
+            </div>
+          </form>
+          <br>
+          <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+          <br>
+          <br>
         </div>
       </div>
     </div>
-
-    <!--Campo para Monto-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="monto">Valor del movimiento del emleado:</label>
-        <div class="col-md-6">
-          <input type="text" th:field="*{monto}" class="form-control" id="monto" required="required"></div>
-      </div>
-    </div>
-
-    <!--Campo para Usuario Responsable-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="usuario">Usuario responsable: </label>
-        <div class="col-md-6">
-          <select th:field="*{usuario}" class="form-control" id="usuario" required="required">
-            <option th:each="empleado: ${emplelist}" th:text="${empleado.nombre}" th:value="${empleado.id}"></option>
-          </select></div>
-      </div>
-    </div>
-
-    <!--Campo para fecha-->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label class="col-md-3" for="fecha">Fecha del movimiento del empleado:</label>
-        <div class="col-md-6">
-          <input type="date" th:field="*{fecha}" class="form-control" id="fecha" required="required" readonly></div>
-      </div>
-    </div>
-
-
-    <!--Boton para enviar todo y ejecutar accion -->
-    <div class="row">
-      <div class="col-md-2">
-        <button class="btn btn-success">Registrar Movimientos</button>
-      </div>
-    </div>
-
-  </form>
-
-  <br>
-  <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
-
+  </div>
 </div>
 <script th:inline="javascript">
   window.onload=function() {
     document.getElementById("fecha").value=new Date().toJSON().slice(0,10).replace(/-/g,'-');
   }
-
 </script>
-
 </body>
 </html>
